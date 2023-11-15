@@ -4,7 +4,7 @@ CXX = g++
 CXXFLAGS= -Wall -Wno-uninitialized
 
 BINARIES=distanceBetweenTest initPointTest pointsApproxEqualTest boxesApproxEqualTest \
-	initBoxTest areaOfBoxTest pointToStringTest
+	initBoxTest areaOfBoxTest pointToStringTest boxToStringTest
 
 COMMON_OBJECTS=tddFuncs.o utility.o shapeFuncs.o
 
@@ -18,6 +18,7 @@ tests: ${BINARIES}
 	./initBoxTest
 	./areaOfBoxTest
 	./pointToStringTest
+	./boxToStringTest
 
 
 distanceBetweenTest: distanceBetweenTest.o $(COMMON_OBJECTS)
@@ -40,6 +41,9 @@ initBoxTest: initBoxTest.o $(COMMON_OBJECTS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
 pointToStringTest: pointToStringTest.o $(COMMON_OBJECTS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+
+boxToStringTest: boxToStringTest.o $(COMMON_OBJECTS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
 clean:
