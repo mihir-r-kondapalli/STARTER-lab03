@@ -63,16 +63,18 @@ bool pointsApproxEqual(Point p1, Point p2, double tolerance) {
   // is less than our tolerance.  (If we want to test for 
   // exact equality, we can pass in a value of zero.)
 
-  return distanceBetween(p1,p2) < tolerance;
+  return distanceBetween(p1,p2) <= tolerance;
 
 }
 
 bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
 
-  bool upleft = pointsApproxEqual(b1.ul, b2.ul);
-  bool widthHeight = fabs(b1.width-b2.width) < tolerance && fabs(b1.height-b2.height) < tolerance;
+  bool upleftx = approxEqual(b1.ul.x, b2.ul.x, tolerance);
+  bool uplefty = approxEqual(b1.ul.y, b2.ul.y, tolerance);
+  bool width = approxEqual(b1.width, b2.width, tolerance);
+  bool height = approxEqual(b1.height, b2.height, tolerance);
 
-  return upleft && widthHeight;
+  return upleftx && uplefty && width && height;
 }
 
 

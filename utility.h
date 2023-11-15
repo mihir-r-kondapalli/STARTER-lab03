@@ -7,3 +7,4 @@
 // then be sure to  #include "utility.h" in the file where you use
 // these functions
 
+bool approxEqual(double num1, double num2, double tolerance);
